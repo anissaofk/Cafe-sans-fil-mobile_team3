@@ -8,7 +8,6 @@ Si les infos sont bonnes --> redirection vers homepage
 Sinon, afficher un texte d'erreur en dessous du boutton login
 Il faut en dessous du textInput password avoir un texte (hyperlink) vers la page resetPwd
 */
-
 import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { FONTS } from "../static/theme";

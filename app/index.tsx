@@ -1,7 +1,6 @@
 /* la première page vers laquelle on est redirigé sera celle de onboarding
 il faut chercher comment faire qu'au premier log in seulement, on ait le processus d'onboarding
 */
-
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import OnBoarding from "./onboarding";
