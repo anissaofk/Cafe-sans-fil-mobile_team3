@@ -30,7 +30,7 @@ export default function Homepage() {
 }
 
 const styles = StyleSheet.create({
-// mettez vos styles ici
+//mettez vos styles ici
     exempleText :{
         textAlign: 'center',
         fontSize: 20,
