@@ -1,13 +1,14 @@
 class MenuItems {
-    constructor(name, description, price, imageURL, category, slug) {
+    constructor(name, description, price, imageURL, category, slug, restoSlug) {
       this.name = name;
       this.description = description;
       this.price = price;
       this.image = imageURL;
       this.category = category;
       this.slug = slug;
+      this.restoSlug = restoSlug;
     }
-    static jsonToMenu(json){
+    static jsonToMenu(json, restoSlug){
       //console.log(json);
       let name = json['name'];
       let description = json['description'];
@@ -15,12 +16,12 @@ class MenuItems {
       let image = json['image_url'];
       let category = json['category'];
       let slug = json['slug'];
-      return new MenuItems(name,description,price,image,category,slug);
+      return new MenuItems(name,description,price,image,category,slug, restoSlug);
     }
   }
   
   class Restaurent {
-    constructor (name, description, imageURL, location, slug, menu) {
+    constructor (name='', description='', imageURL='', location='', slug='', menu=[]) {
       this.name = name;
       this.description = description;
       //this.opHours = opHours;
@@ -52,7 +53,7 @@ class MenuItems {
       //append each item to list
       let menuList = [];
       for (let i = 0; i<indList.length; i++){
-        menuList.push(MenuItems.jsonToMenu(jsonList[indList[i]]));
+        menuList.push(MenuItems.jsonToMenu(jsonList[indList[i]],slug));
       }
   
       return new Restaurent(name,description,image,location,slug,menuList);
