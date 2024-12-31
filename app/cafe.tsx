@@ -4,8 +4,19 @@ import React, {useState,useEffect} from 'react';
 import { ScrollView, Text, StyleSheet, View, Image } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Restaurent, MenuItems } from "../assets/resto_obj";
+import { itemObj } from '@/assets/exemple_data/item_exemple';
 
 export default function Cafe(){
+    function showItemBox(item){
+        return(
+            <View>
+                <Image style={styles.itemImage} source={{uri:item.image}}/>
+                <Text style={styles.itemName}>{item.name}</Text>
+                <Text style={styles.itemDesc}>{item.description}</Text>
+                <Text style={styles.itemPrice}>{item.price}</Text>
+            </View>
+        )
+    }
     const [resto, setResto] = useState(new Restaurent('', '', '', '', '', []));
     
     const getTestResto = async () => {
@@ -13,7 +24,7 @@ export default function Cafe(){
           const response = await fetch('https://cafesansfil-api-r0kj.onrender.com/api/cafes/acquis-de-droit');
           const data = await response.json(); // On convertit la réponse en JSON
           setResto(Restaurent.jsonToResto(data));
-          console.log(resto);
+          //console.log(resto);
         } catch (error) {
           console.log('Erreur lors de la récupération de la blague :', error);
         }
@@ -26,6 +37,7 @@ export default function Cafe(){
         <View>
             <Text>Category 2</Text>
             <ScrollView horizontal style={styles.container}>
+                {resto.menu.map(showItemBox)}
                 <Text style={[styles.box,styles.itemBox]}>item 1</Text>
                 <Text style={[styles.box,styles.itemBox]}>item 2</Text>
                 <Text style={[styles.box,styles.itemBox]}>item 3</Text>
@@ -38,7 +50,7 @@ export default function Cafe(){
                 <Text style={[styles.box,styles.itemBox]}>item 10</Text>
             </ScrollView>
         </View>
-        <Text>{resto.image}</Text>
+        <Image style={styles.itemImage} source={{uri:resto.image}}/>
     </SafeAreaView>
     )
 }
@@ -57,21 +69,20 @@ const styles = StyleSheet.create({
     },
     boxShadow:{
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
-        width: 100,
-        height:100,
+        width: 300,
+        height:300,
         borderRadius: 4,
         margin: 8,
     },
-    itemBox:{
+    itemBox:{/*
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         width: 100,
         height:100,
         borderRadius: 4,
-        margin: 8,
+        margin: 8,*/
     },
     container:{
 
@@ -79,9 +90,17 @@ const styles = StyleSheet.create({
     restoImage:{
         //width:'100%',
         height: 500,
-        resizeMode: 'contain',
+        //resizeMode: 'contain',
     },
     itemImage:{
-        height:300
-    }
+        height:50,
+        resizeMode:'contain'
+    },
+    itemName:{
+
+    },
+    itemDesc:{
+
+    },
+    itemPrice:{}
 })
