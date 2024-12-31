@@ -9,11 +9,11 @@ import { itemObj } from '@/assets/exemple_data/item_exemple';
 export default function Cafe(){
     function showItemBox(item){
         return(
-            <View>
+            <View style={[styles.box,styles.boxShadow]}>
                 <Image style={styles.itemImage} source={{uri:item.image}}/>
                 <Text style={styles.itemName}>{item.name}</Text>
                 <Text style={styles.itemDesc}>{item.description}</Text>
-                <Text style={styles.itemPrice}>{item.price}</Text>
+                <Text style={styles.itemPrice}>{item.price}$</Text>
             </View>
         )
     }
@@ -34,29 +34,21 @@ export default function Cafe(){
     }, []);
     return(
     <SafeAreaView> 
-        <View>
-            <Text>Category 2</Text>
-            <ScrollView horizontal style={styles.container}>
-                {resto.menu.map(showItemBox)}
-                <Text style={[styles.box,styles.itemBox]}>item 1</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 2</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 3</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 4</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 5</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 6</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 7</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 8</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 9</Text>
-                <Text style={[styles.box,styles.itemBox]}>item 10</Text>
-            </ScrollView>
-        </View>
-        <Image style={styles.itemImage} source={{uri:resto.image}}/>
+        <ScrollView>
+            <View>
+                <Text>Category 2</Text>
+                <ScrollView horizontal style={styles.container}>
+                    {resto.menu.map(showItemBox)}
+                </ScrollView>
+            </View>
+            <Image style={styles.restoImage} source={{uri:resto.image}}/>
+        </ScrollView>
     </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
-    box : {
+    boxShadow : {
         backgroundColor: '#CAD5E2',
         elevation: 4,
         shadowOffset: {
@@ -67,33 +59,25 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.4,
         shadowRadius: 2
     },
-    boxShadow:{
+    box:{
         flex: 1,
         justifyContent: 'center',
         width: 300,
-        height:300,
+        height:200,
         borderRadius: 4,
         margin: 8,
-    },
-    itemBox:{/*
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 100,
-        height:100,
-        borderRadius: 4,
-        margin: 8,*/
     },
     container:{
 
     },
     restoImage:{
         //width:'100%',
-        height: 500,
+        height: 1000,
         //resizeMode: 'contain',
     },
     itemImage:{
-        height:50,
+        width:300,
+        height:130,
         resizeMode:'contain'
     },
     itemName:{
