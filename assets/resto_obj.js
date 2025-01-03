@@ -38,6 +38,19 @@ class MenuItems {
       }
       this.menuCat = Array.from(menuCatSet);
     }
+
+    //return all menu items of same category
+    menuItemCat(cat) {
+      let res = [];
+      for(let i = 0; i<this.menu.length; i++){
+        if(this.menu[i].category==cat){
+          res.push(this.menu[i]);
+        }
+      }
+      return res;
+    }
+
+    //create resaurent obj from json
     static jsonToResto(json){
       let name = json['name'];
       let description = json['description'];
