@@ -1,5 +1,5 @@
 class MenuItems {
-    constructor(name, description, price, imageURL, category, slug, restoSlug) {
+    constructor(name='', description='', price='', imageURL='', category='', slug='', restoSlug='') {
       this.name = name;
       this.description = description;
       this.price = price;
